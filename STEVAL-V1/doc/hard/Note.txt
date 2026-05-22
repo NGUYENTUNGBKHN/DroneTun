@@ -4,4 +4,11 @@
 software solutions specifically designed for the construction and 
 optimization of drones and unmanned aerial vehicles.
 
+The technical matterials detail essential subsystems including 
+ - flight controller units
+ - electronic speed controller
+ - mission profile units
+that utilize high-performance microcontroller and sensors.
+
+
 
