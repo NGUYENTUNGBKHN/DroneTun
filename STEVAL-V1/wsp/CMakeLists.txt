@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.20)
 # Must be set BEFORE project() so toolchain is picked up
 # Usage: cmake -B _cmake_build -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi.cmake
 
-project(STEVAL-V1-wsp C CXX ASM)
+project(STEVAL-V1-wsp C ASM)
 
 # --------------------------------------------------------------------------
 # Global MCU flags (shared by all targets)
@@ -22,7 +22,5 @@ find_program(CMAKE_OBJCOPY arm-none-eabi-objcopy HINTS $ENV{TOOLCHAIN_TUNG})
 # Subdirectories — order matters (dependencies first)
 # --------------------------------------------------------------------------
 add_subdirectory(SDK)
-add_subdirectory(Middleware)
-add_subdirectory(Bootloader)
-add_subdirectory(Application)
+
 

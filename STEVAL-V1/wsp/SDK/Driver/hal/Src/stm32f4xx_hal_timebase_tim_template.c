@@ -24,7 +24,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
-
+#if 0
 /** @addtogroup STM32F4xx_HAL_Driver
   * @{
   */
@@ -165,7 +165,7 @@ void TIM6_DAC_IRQHandler(void)
 {
   HAL_TIM_IRQHandler(&TimHandle);
 }
-
+#endif 
 /**
   * @}
   */ 

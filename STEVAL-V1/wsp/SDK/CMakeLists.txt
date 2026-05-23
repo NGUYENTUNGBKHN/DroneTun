@@ -23,13 +23,15 @@ target_include_directories(stm32f401_lib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/Device/Include
     ${CMAKE_CURRENT_SOURCE_DIR}/Device/Include/Legacy
     ${CMAKE_CURRENT_SOURCE_DIR}/Driver/hal
-    ${CMAKE_CURRENT_SOURCE_DIR}/Driver/hal/Inc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Driver/hal/Include
 )
 
 # --------------------------------------------------------------------------
 # Compile flags — same as SDK/Makefile (-O0 -g for library)
 # --------------------------------------------------------------------------
 target_compile_options(stm32f401_lib PRIVATE
-    $(MCU_FLAGS)
+    -mcpu=cortex-m4 -mthumb --specs=nano.specs
+    -mfloat-abi=hard -mfpu=fpv4-sp-d16
     -O0 -g
+    -DSTM32F401xC
 )
