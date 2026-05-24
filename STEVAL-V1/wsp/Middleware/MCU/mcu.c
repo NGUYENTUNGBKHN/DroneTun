@@ -40,13 +40,15 @@ void clock_config();
 void mcu_init()
 {
     /* MPU Initialize */
-    mpu_init();
+    // mpu_init();
     /* Enable cache */
     cache_enable();
     /* HAL Initialize */
     hal_init();
     /* Clock Configuration */
     clock_config();
+    /* Debug configure */
+    debug_uart_init(STEVAL_BOARD_DEBUG_BAUD_RATE);
 }
 
 void mpu_init()

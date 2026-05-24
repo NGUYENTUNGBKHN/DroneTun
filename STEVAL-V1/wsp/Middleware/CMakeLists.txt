@@ -6,10 +6,12 @@ add_library(middleware STATIC)
 # --------------------------------------------------------------------------
 # Sources
 # --------------------------------------------------------------------------
-file(GLOB MID_MCU_SRC     "${CMAKE_CURRENT_SOURCE_DIR}/MCU/*.c")
+file(GLOB MID_MCU_SRC       "${CMAKE_CURRENT_SOURCE_DIR}/MCU/*.c")
+file(GLOB MID_DEBUG_SRC     "${CMAKE_CURRENT_SOURCE_DIR}/Debug/*.c")
 
 target_sources(middleware PRIVATE
     ${MID_MCU_SRC}
+    ${MID_DEBUG_SRC}
 )
 
 # --------------------------------------------------------------------------
@@ -17,6 +19,7 @@ target_sources(middleware PRIVATE
 # --------------------------------------------------------------------------
 target_include_directories(middleware PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/MCU
+    ${CMAKE_CURRENT_SOURCE_DIR}/Debug
     ${CMAKE_SOURCE_DIR}/BSP
 )
 

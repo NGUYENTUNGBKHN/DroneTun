@@ -1,7 +1,7 @@
 /**
- * @file       boot_main.c
+ * @file       debug.c
  * @brief      
- * @date       2026/05/23
+ * @date       2026/05/24
  * @author     [Gentantun] (nguyenthanhtung8196@gmail.com)
  * @details    
  * @ref        
@@ -10,7 +10,9 @@
 /*******************************************************************************
 **                                INCLUDES
 *******************************************************************************/
-#include "boot_main.h"
+#include "debug.h"
+#include "stm32f4xx_hal.h"
+
 /*******************************************************************************
 **                       INTERNAL MACRO DEFINITIONS
 *******************************************************************************/
@@ -19,7 +21,7 @@
 /*******************************************************************************
 **                      COMMON VARIABLE DEFINITIONS
 *******************************************************************************/
-
+UART_HandleTypeDef huart1;
 
 /*******************************************************************************
 **                      INTERNAL VARIABLE DEFINITIONS
@@ -29,67 +31,55 @@
 /*******************************************************************************
 **                      INTERNAL FUNCTION PROTOTYPES
 *******************************************************************************/
-void jump_to_application();
-void jump_to_bootloader();
+
 
 /*******************************************************************************
 **                          FUNCTION DEFINITIONS
 *******************************************************************************/
-int boot_main()
+
+/**
+ * @brief  Initializes USART1 at standard baudrate, with PA9 (TX) and PA10 (RX).
+ * @param  baudrate USART baudrate (e.g. 115200)
+ * @retval None
+ */
+void debug_uart_init(uint32_t baudrate)
 {
-    uint32_t app_crc_check = 0; 
+    /* Enable GPIOA and USART1 Clock */
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_USART1_CLK_ENABLE();
 
-    /* Essential function initialize */
-    mcu_init();
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-    /* Check CRC */ 
+    /* Configure PA9 (TX) and PA10 (RX) */
+    GPIO_InitStruct.Pin = GPIO_PIN_9 | GPIO_PIN_10;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-    TRACE_INFO("Bootloader --> Start\n");
-    if(app_crc_check)   // jump to Application
-    {
-        jump_to_application();
-    }
-    else                // jump to Bootloader
-    {
-        jump_to_bootloader();
-    }
-    while (1)
-    {
-        /* code */
-    }
-}    
-
-void jump_to_bootloader()
-{
-    boot_process();
+    /* Initialize UART1 */
+    huart1.Instance = USART1;
+    huart1.Init.BaudRate = baudrate;
+    huart1.Init.WordLength = UART_WORDLENGTH_8B;
+    huart1.Init.StopBits = UART_STOPBITS_1;
+    huart1.Init.Parity = UART_PARITY_NONE;
+    huart1.Init.Mode = UART_MODE_TX_RX;
+    huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+    huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+    
+    HAL_UART_Init(&huart1);
 }
 
-void jump_to_application()
+/**
+ * @brief  Transmit a single character over USART1.
+ * @param  ch Character to transmit
+ * @retval None
+ */
+void debug_uart_putchar(char ch)
 {
-    void (*app_reset_handler)(void);
-
-    uint32_t app_msp_addr = *(volatile uint32_t*)(STEVAL_BOARD_APP_START_ADDRESS);
-
-    uint32_t app_reset_addr = *(volatile uint32_t*)(STEVAL_BOARD_APP_START_ADDRESS + 4);
-
-    /* Reset all register */
-    // __set_CONTROL(0x00000000);   // Set CONTROL to its reset value 0.
-    // __set_PRIMASK(0x00000000);   // Set PRIMASK to its reset value 0.
-    // __set_BASEPRI(0x00000000);   // Set BASEPRI to its reset value 0.
-    // __set_FAULTMASK(0x00000000); // Set FAULTMASK to its reset value 0.
-
-    app_reset_handler = (void*)app_reset_addr;
-
-    /* Set MSP */
-    __set_MSP(app_msp_addr);
-    /* Change vtor table */
-    SCB->VTOR = STEVAL_BOARD_APP_START_ADDRESS;
-    /* Call reset handler */
-    app_reset_handler();
+    /* Send a byte via USART1 with polling */
+    HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
 }
-
 
 /******************************** End of file *********************************/
-
- 
-

@@ -1,14 +1,14 @@
 /**
- * @file       boot_main.h
+ * @file       app_main.h
  * @brief      
- * @date       2026/05/23
+ * @date       2026/05/24
  * @author     [Gentantun] (nguyenthanhtung8196@gmail.com)
  * @details    
  * @ref        
  * @copyright  Copyright (c) 2026 RoboTun
 */
-#ifndef _BOOT_MAIN_H_
-#define _BOOT_MAIN_H_
+#ifndef _APP_MAIN_H_
+#define _APP_MAIN_H_
 #ifdef __cplusplus
 extern "C"
 {
@@ -17,7 +17,6 @@ extern "C"
 /* CODE */
 #include <stdio.h>
 #include <stdint.h>
-#include "boot_process.h"
 #include "mcu.h"
 #include "debug.h"
 
@@ -25,4 +24,3 @@ extern "C"
 }
 #endif
 #endif
-

@@ -29,8 +29,8 @@
 #include <time.h>
 #include <sys/time.h>
 #include <sys/times.h>
-// #include "debug_uart.h"
-#define ITM_DEBUG  1
+#include "debug.h"
+#define ITM_DEBUG  0
 #if ITM_DEBUG
 /* ITM Function */
 

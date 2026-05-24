@@ -30,6 +30,10 @@ extern "C"
 #define STEVAL_BOARD_APP_START_ADDRESS   0x08040000
 #define STEVAL_BOARD_APP_SIZE            0x3FFFF      
 
+/***********************/
+/* Setup Board         */
+/***********************/
+#define STEVAL_BOARD_DEBUG_BAUD_RATE    115200
 
 #ifdef __cplusplus
 }

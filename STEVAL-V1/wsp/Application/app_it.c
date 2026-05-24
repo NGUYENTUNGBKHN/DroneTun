@@ -1,7 +1,7 @@
 /**
- * @file       boot_main.c
+ * @file       app_it.c
  * @brief      
- * @date       2026/05/23
+ * @date       2026/05/24
  * @author     [Gentantun] (nguyenthanhtung8196@gmail.com)
  * @details    
  * @ref        
@@ -10,7 +10,8 @@
 /*******************************************************************************
 **                                INCLUDES
 *******************************************************************************/
-#include "boot_main.h"
+#include "app_it.h"
+#include "app_main.h"
 /*******************************************************************************
 **                       INTERNAL MACRO DEFINITIONS
 *******************************************************************************/
@@ -29,67 +30,107 @@
 /*******************************************************************************
 **                      INTERNAL FUNCTION PROTOTYPES
 *******************************************************************************/
-void jump_to_application();
-void jump_to_bootloader();
+
 
 /*******************************************************************************
 **                          FUNCTION DEFINITIONS
 *******************************************************************************/
-int boot_main()
+/**
+ * @brief   This function handles NMI exception.
+ * @param  None
+ * @retval None
+ */
+void NMI_IRQHandler(void)
 {
-    uint32_t app_crc_check = 0; 
+}
 
-    /* Essential function initialize */
-    mcu_init();
-
-    /* Check CRC */ 
-
-    TRACE_INFO("Bootloader --> Start\n");
-    if(app_crc_check)   // jump to Application
-    {
-        jump_to_application();
-    }
-    else                // jump to Bootloader
-    {
-        jump_to_bootloader();
-    }
+/**
+ * @brief  This function handles Hard Fault exception.
+ * @param  None
+ * @retval None
+ */
+void HardFault_IRQHandler(void)
+{
+    /* Go to infinite loop when Hard Fault exception occurs */
     while (1)
     {
-        /* code */
     }
-}    
-
-void jump_to_bootloader()
-{
-    boot_process();
 }
 
-void jump_to_application()
+/**
+ * @brief  This function handles Memory Manage exception.
+ * @param  None
+ * @retval None
+ */
+void MemManage_IRQHandler(void)
 {
-    void (*app_reset_handler)(void);
-
-    uint32_t app_msp_addr = *(volatile uint32_t*)(STEVAL_BOARD_APP_START_ADDRESS);
-
-    uint32_t app_reset_addr = *(volatile uint32_t*)(STEVAL_BOARD_APP_START_ADDRESS + 4);
-
-    /* Reset all register */
-    // __set_CONTROL(0x00000000);   // Set CONTROL to its reset value 0.
-    // __set_PRIMASK(0x00000000);   // Set PRIMASK to its reset value 0.
-    // __set_BASEPRI(0x00000000);   // Set BASEPRI to its reset value 0.
-    // __set_FAULTMASK(0x00000000); // Set FAULTMASK to its reset value 0.
-
-    app_reset_handler = (void*)app_reset_addr;
-
-    /* Set MSP */
-    __set_MSP(app_msp_addr);
-    /* Change vtor table */
-    SCB->VTOR = STEVAL_BOARD_APP_START_ADDRESS;
-    /* Call reset handler */
-    app_reset_handler();
+    /* Go to infinite loop when Memory Manage exception occurs */
+    while (1)
+    {
+    }
 }
 
+/**
+ * @brief  This function handles Bus Fault exception.
+ * @param  None
+ * @retval None
+ */
+void BusFault_IRQHandler(void)
+{
+    /* Go to infinite loop when Bus Fault exception occurs */
+    while (1)
+    {
+    }
+}
+
+/**
+ * @brief  This function handles Usage Fault exception.
+ * @param  None
+ * @retval None
+ */
+void UsageFault_IRQHandler(void)
+{
+    /* Go to infinite loop when Usage Fault exception occurs */
+    while (1)
+    {
+    }
+}
+
+/**
+ * @brief  This function handles SVCall exception.
+ * @param  None
+ * @retval None
+ */
+void SVC_IRQHandler(void)
+{
+}
+
+/**
+ * @brief  This function handles Debug Monitor exception.
+ * @param  None
+ * @retval None
+ */
+void DebugMonitor_IRQHandler(void)
+{
+}
+
+/**
+ * @brief  This function handles PendSVC exception.
+ * @param  None
+ * @retval None
+ */
+void PendSV_IRQHandler(void)
+{
+}
+/**
+ * @brief  This function handles SysTick Handler.
+ * @param  None
+ * @retval None
+ */
+void SysTick_IRQHandler(void)
+{
+    HAL_IncTick();
+}
 
 /******************************** End of file *********************************/
-
- 
 
