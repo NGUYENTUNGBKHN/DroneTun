@@ -1,0 +1,47 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug STEVAL-V1/Bootloader",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/STEVAL-V1/wsp/_cmake_build/Bootloader/boot.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "device": "STM32F401xC",
+            "svdFile": "${workspaceFolder}/svd/stm32f401.svd",
+            "interface": "swd",
+            "runToEntryPoint": "boot_main",
+            "postLaunchCommands": [
+                "monitor reset halt",
+                "load",
+                "monitor reset halt"
+            ],
+            "postRestartCommands": [
+                "monitor reset halt",
+                "load",
+                "monitor reset halt"
+            ],
+            "configFiles": [
+                "interface/stlink.cfg",
+                "target/stm32f4x.cfg"
+            ],
+            "searchDir": [
+                "D:/openocd-v0.12.0-i686-w64-mingw32/share/openocd/scripts"
+            ],
+            "swoConfig": {
+                "enabled": true,
+                "cpuFrequency": 84000000,
+                "swoFrequency": 2000000,
+                "source": "probe",
+                "decoders": [
+                    {
+                        "type": "console",
+                        "label": "ITM",
+                        "port": 0
+                    }
+                ]
+            }
+        }
+    ]
+}

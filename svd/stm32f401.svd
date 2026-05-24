@@ -3554,7 +3554,7 @@
               </field>
             </fields>
           </register>
-          <register derivedFrom="OTG_FS_DEVICE.DIEP0.INT">
+          <register derivedFrom="DIEP0.INT">
             <name>INT</name>
             <displayName>DIEPINT1</displayName>
             <description>device endpoint-1 interrupt
@@ -3591,7 +3591,7 @@
               </field>
             </fields>
           </register>
-          <register derivedFrom="OTG_FS_DEVICE.DIEP0.TXFSTS">
+          <register derivedFrom="DIEP0.TXFSTS">
             <name>TXFSTS</name>
             <displayName>DTXFSTS1</displayName>
             <description>OTG_FS device IN endpoint transmit FIFO
@@ -3866,7 +3866,7 @@
               </field>
             </fields>
           </register>
-          <register derivedFrom="OTG_FS_DEVICE.DOEP0.INT">
+          <register derivedFrom="DOEP0.INT">
             <name>INT</name>
             <displayName>DOEPINT1</displayName>
             <description>device endpoint-1 interrupt
@@ -21788,7 +21788,7 @@
             </field>
           </fields>
         </register>
-        <register derivedFrom="GPIOA.OTYPER">
+        <register derivedFrom="OTYPER">
           <name>OTYPER</name>
           <displayName>OTYPER</displayName>
           <description>GPIO port output type register</description>
@@ -21836,40 +21836,40 @@
             </field>
           </fields>
         </register>
-        <register derivedFrom="GPIOA.IDR">
+        <register derivedFrom="IDR">
           <name>IDR</name>
           <displayName>IDR</displayName>
           <description>GPIO port input data register</description>
           <addressOffset>0x10</addressOffset>
         </register>
-        <register derivedFrom="GPIOA.ODR">
+        <register derivedFrom="ODR">
           <name>ODR</name>
           <displayName>ODR</displayName>
           <description>GPIO port output data register</description>
           <addressOffset>0x14</addressOffset>
         </register>
-        <register derivedFrom="GPIOA.BSRR">
+        <register derivedFrom="BSRR">
           <name>BSRR</name>
           <displayName>BSRR</displayName>
           <description>GPIO port bit set/reset
           register</description>
           <addressOffset>0x18</addressOffset>
         </register>
-        <register derivedFrom="GPIOA.LCKR">
+        <register derivedFrom="LCKR">
           <name>LCKR</name>
           <displayName>LCKR</displayName>
           <description>GPIO port configuration lock
           register</description>
           <addressOffset>0x1C</addressOffset>
         </register>
-        <register derivedFrom="GPIOA.AFRL">
+        <register derivedFrom="AFRL">
           <name>AFRL</name>
           <displayName>AFRL</displayName>
           <description>GPIO alternate function low
           register</description>
           <addressOffset>0x20</addressOffset>
         </register>
-        <register derivedFrom="GPIOA.AFRH">
+        <register derivedFrom="AFRH">
           <name>AFRH</name>
           <displayName>AFRH</displayName>
           <description>GPIO alternate function high
@@ -21878,15 +21878,15 @@
         </register>
       </registers>
     </peripheral>
-    <peripheral derivedFrom="GPIOH">
+    <peripheral derivedFrom="GPIOE">
       <name>GPIOE</name>
       <baseAddress>0x40021000</baseAddress>
     </peripheral>
-    <peripheral derivedFrom="GPIOH">
+    <peripheral derivedFrom="GPIOD">
       <name>GPIOD</name>
       <baseAddress>0x40020C00</baseAddress>
     </peripheral>
-    <peripheral derivedFrom="GPIOH">
+    <peripheral derivedFrom="GPIOC">
       <name>GPIOC</name>
       <baseAddress>0x40020800</baseAddress>
     </peripheral>
@@ -21921,7 +21921,7 @@
             </field>
           </fields>
         </register>
-        <register derivedFrom="GPIOA.OTYPER">
+        <register derivedFrom="OTYPER">
           <name>OTYPER</name>
           <displayName>OTYPER</displayName>
           <description>GPIO port output type register</description>
@@ -21969,40 +21969,40 @@
             </field>
           </fields>
         </register>
-        <register derivedFrom="GPIOA.IDR">
+        <register derivedFrom="IDR">
           <name>IDR</name>
           <displayName>IDR</displayName>
           <description>GPIO port input data register</description>
           <addressOffset>0x10</addressOffset>
         </register>
-        <register derivedFrom="GPIOA.ODR">
+        <register derivedFrom="ODR">
           <name>ODR</name>
           <displayName>ODR</displayName>
           <description>GPIO port output data register</description>
           <addressOffset>0x14</addressOffset>
         </register>
-        <register derivedFrom="GPIOA.BSRR">
+        <register derivedFrom="BSRR">
           <name>BSRR</name>
           <displayName>BSRR</displayName>
           <description>GPIO port bit set/reset
           register</description>
           <addressOffset>0x18</addressOffset>
         </register>
-        <register derivedFrom="GPIOA.LCKR">
+        <register derivedFrom="LCKR">
           <name>LCKR</name>
           <displayName>LCKR</displayName>
           <description>GPIO port configuration lock
           register</description>
           <addressOffset>0x1C</addressOffset>
         </register>
-        <register derivedFrom="GPIOA.AFRL">
+        <register derivedFrom="AFRL">
           <name>AFRL</name>
           <displayName>AFRL</displayName>
           <description>GPIO alternate function low
           register</description>
           <addressOffset>0x20</addressOffset>
         </register>
-        <register derivedFrom="GPIOA.AFRH">
+        <register derivedFrom="AFRH">
           <name>AFRH</name>
           <displayName>AFRH</displayName>
           <description>GPIO alternate function high

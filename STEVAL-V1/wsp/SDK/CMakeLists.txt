@@ -29,6 +29,8 @@ target_include_directories(stm32f401_lib PUBLIC
 # --------------------------------------------------------------------------
 # Compile flags — same as SDK/Makefile (-O0 -g for library)
 # --------------------------------------------------------------------------
+set_target_properties(stm32f401_lib PROPERTIES PREFIX "")
+
 target_compile_options(stm32f401_lib PRIVATE
     -mcpu=cortex-m4 -mthumb --specs=nano.specs
     -mfloat-abi=hard -mfpu=fpv4-sp-d16

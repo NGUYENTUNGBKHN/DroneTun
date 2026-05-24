@@ -1,26 +1,23 @@
 /**
- * @file       boot_main.h
+ * @file       boot_process.h
  * @brief      
- * @date       2026/05/23
+ * @date       2026/05/24
  * @author     [Gentantun] (nguyenthanhtung8196@gmail.com)
  * @details    
  * @ref        
  * @copyright  Copyright (c) 2026 RoboTun
 */
-#ifndef _BOOT_MAIN_H_
-#define _BOOT_MAIN_H_
+#ifndef _BOOT_PROCESS_H_
+#define _BOOT_PROCESS_H_
 #ifdef __cplusplus
 extern "C"
 {
 #endif
 
 /* CODE */
-#include <stdint.h>
-#include "boot_process.h"
-#include "mcu.h"
+void boot_process();
 
 #ifdef __cplusplus
 }
 #endif
 #endif
-

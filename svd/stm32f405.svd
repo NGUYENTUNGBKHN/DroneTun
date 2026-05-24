@@ -28206,7 +28206,7 @@ Once the RNG_DR register has been read, this bit returns to 0 until a new random
               </field>
             </fields>
           </register>
-          <register derivedFrom="OTG_FS_DEVICE.DIEP0.INT">
+          <register derivedFrom="DIEP0.INT">
             <name>INT</name>
             <displayName>DIEPINT1</displayName>
             <description>device endpoint-1 interrupt
@@ -28243,7 +28243,7 @@ Once the RNG_DR register has been read, this bit returns to 0 until a new random
               </field>
             </fields>
           </register>
-          <register derivedFrom="OTG_FS_DEVICE.DIEP0.TXFSTS">
+          <register derivedFrom="DIEP0.TXFSTS">
             <name>TXFSTS</name>
             <displayName>DTXFSTS1</displayName>
             <description>OTG_FS device IN endpoint transmit FIFO
@@ -28518,7 +28518,7 @@ Once the RNG_DR register has been read, this bit returns to 0 until a new random
               </field>
             </fields>
           </register>
-          <register derivedFrom="OTG_FS_DEVICE.DOEP0.INT">
+          <register derivedFrom="DOEP0.INT">
             <name>INT</name>
             <displayName>DOEPINT1</displayName>
             <description>device endpoint-1 interrupt

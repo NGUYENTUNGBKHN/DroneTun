@@ -23,5 +23,6 @@ find_program(CMAKE_OBJCOPY arm-none-eabi-objcopy HINTS $ENV{TOOLCHAIN_TUNG})
 # --------------------------------------------------------------------------
 add_subdirectory(SDK)
 add_subdirectory(Bootloader)
+add_subdirectory(Middleware)
 
 

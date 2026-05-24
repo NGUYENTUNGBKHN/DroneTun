@@ -152,7 +152,7 @@ void FPU_IRQHandler(void) __attribute((weak, alias("default_handler")));
 void SPI4_IRQHandler(void) __attribute((weak, alias("default_handler")));
 
 
-__attribute((section("isr_vector")))
+__attribute__((section(".isr_vector")))
 uint32_t *_isr_vector[] = {
     (uint32_t*) &_estack,                               /* top stack pointer */
     (uint32_t*) Reset_Handler,                          /* Reset handler  */

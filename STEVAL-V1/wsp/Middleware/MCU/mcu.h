@@ -15,6 +15,13 @@ extern "C"
 #endif
 
 /* CODE */
+#include "steval_board_1.h"
+#include "stm32f4xx_hal_conf.h"
+#include "stm32f4xx_hal.h"
+#include "cachel1_armv7.h"
+
+
+void mcu_init();
 
 #ifdef __cplusplus
 }

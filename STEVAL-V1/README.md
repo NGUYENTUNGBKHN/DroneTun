@@ -12,4 +12,5 @@ cmake --build _cmake_build --target boot -j4
 ## Rebuild project
 cmake --build _cmake_build --target boot --clean-first -j4
 
-
+## 4. Build Middleware
+cmake --build _cmake_build --target middleware -j4

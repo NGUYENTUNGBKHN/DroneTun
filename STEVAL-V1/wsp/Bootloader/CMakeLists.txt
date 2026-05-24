@@ -27,6 +27,7 @@ add_executable(boot
 # --------------------------------------------------------------------------
 target_include_directories(boot PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/BSP
 )
 
 # --------------------------------------------------------------------------
@@ -61,7 +62,10 @@ set_target_properties(boot PROPERTIES OUTPUT_NAME "boot" SUFFIX ".elf")
 # --------------------------------------------------------------------------
 # Libraries
 # --------------------------------------------------------------------------
-target_link_libraries(boot PRIVATE stm32f401_lib)
+target_link_libraries(boot PRIVATE 
+    stm32f401_lib
+    middleware
+)
 
 # --------------------------------------------------------------------------
 # Post-build: generate .bin and .hex
