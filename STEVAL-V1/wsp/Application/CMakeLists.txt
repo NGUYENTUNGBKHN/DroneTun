@@ -81,8 +81,8 @@ add_custom_command(TARGET app POST_BUILD
 add_custom_target(flash_bin
     DEPENDS app
     COMMAND STM32_Programmer_CLI.exe -c port=SWD
-            -w ${CMAKE_CURRENT_BINARY_DIR}/app.bin 0x080C0000 -v -rst
-    COMMENT "Flashing app.bin to internal flash at 0x080C0000"
+            -w ${CMAKE_CURRENT_BINARY_DIR}/app.bin 0x0800C000 -v -rst
+    COMMENT "Flashing app.bin to internal flash at 0x0800C000"
 )
 
 # Flash external QSPI flash (0x90000000)

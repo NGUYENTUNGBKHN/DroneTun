@@ -38,6 +38,9 @@
 
 int app_main()
 {
+    /* Essential function initialize */
+    mcu_init();
+
     TRACE_INFO("Application --> Start\n");
     while (1)
     {

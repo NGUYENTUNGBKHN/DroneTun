@@ -11,8 +11,8 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Memories definition */
 MEMORY
 {
-  SRAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 96K
-  FLASH    (rx)     : ORIGIN = 0x080C0000,   LENGTH = 464K     /* SECTOR 3 - 7 */
+  SRAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 64K
+  FLASH    (rx)     : ORIGIN = 0x0800C000,   LENGTH = 464K     /* SECTOR 3 - 7 */
 }
 
 /* Sections */

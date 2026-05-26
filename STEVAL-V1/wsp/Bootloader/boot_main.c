@@ -37,7 +37,7 @@ void jump_to_bootloader();
 *******************************************************************************/
 int boot_main()
 {
-    uint32_t app_crc_check = 0; 
+    uint32_t app_crc_check = 1; 
 
     /* Essential function initialize */
     mcu_init();

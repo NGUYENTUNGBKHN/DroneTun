@@ -27,7 +27,7 @@ extern "C"
 /* BOOTLOADER */
 
 /* APPLICATION */
-#define STEVAL_BOARD_APP_START_ADDRESS   0x08040000
+#define STEVAL_BOARD_APP_START_ADDRESS   0x0800C000
 #define STEVAL_BOARD_APP_SIZE            0x3FFFF      
 
 /***********************/
