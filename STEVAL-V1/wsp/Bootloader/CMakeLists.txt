@@ -27,7 +27,6 @@ add_executable(boot
 # --------------------------------------------------------------------------
 target_include_directories(boot PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}/BSP
 )
 
 # --------------------------------------------------------------------------

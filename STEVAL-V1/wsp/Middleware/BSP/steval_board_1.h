@@ -15,7 +15,7 @@ extern "C"
 #endif
 
 /* CODE */
-
+#include <stdint.h>
 /************************/
 /* STEVAL Memory Map    */
 /************************/                            
@@ -34,6 +34,17 @@ extern "C"
 /* Setup Board         */
 /***********************/
 #define STEVAL_BOARD_DEBUG_BAUD_RATE    115200
+
+/***********************/
+/* Bluetooth Board     */
+/***********************/
+extern volatile uint32_t HCI_ProcessEvent;
+
+/***********************/
+/* PINOUT Board        */
+/***********************/
+
+
 
 #ifdef __cplusplus
 }

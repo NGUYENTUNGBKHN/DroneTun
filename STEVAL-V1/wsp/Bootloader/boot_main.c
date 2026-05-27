@@ -73,10 +73,10 @@ void jump_to_application()
     uint32_t app_reset_addr = *(volatile uint32_t*)(STEVAL_BOARD_APP_START_ADDRESS + 4);
 
     /* Reset all register */
-    // __set_CONTROL(0x00000000);   // Set CONTROL to its reset value 0.
-    // __set_PRIMASK(0x00000000);   // Set PRIMASK to its reset value 0.
-    // __set_BASEPRI(0x00000000);   // Set BASEPRI to its reset value 0.
-    // __set_FAULTMASK(0x00000000); // Set FAULTMASK to its reset value 0.
+    __set_CONTROL(0x00000000);   // Set CONTROL to its reset value 0.
+    __set_PRIMASK(0x00000000);   // Set PRIMASK to its reset value 0.
+    __set_BASEPRI(0x00000000);   // Set BASEPRI to its reset value 0.
+    __set_FAULTMASK(0x00000000); // Set FAULTMASK to its reset value 0.
 
     app_reset_handler = (void*)app_reset_addr;
 
