@@ -258,6 +258,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef *hspi)
         GPIO_InitStruct.Pull = BNRG_SPI_CS_PULL;
         GPIO_InitStruct.Speed = BNRG_SPI_CS_SPEED;
         HAL_GPIO_Init(BNRG_SPI_CS_PORT, &GPIO_InitStruct);
+        HAL_GPIO_WritePin(BNRG_SPI_CS_PORT, BNRG_SPI_CS_PIN, GPIO_PIN_SET);
 
         /* Configure Reset pin (PB.2) */
         GPIO_InitStruct.Pin = BNRG_SPI_RESET_PIN;
@@ -265,6 +266,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef *hspi)
         GPIO_InitStruct.Pull = BNRG_SPI_RESET_PULL;
         GPIO_InitStruct.Speed = BNRG_SPI_RESET_SPEED;
         HAL_GPIO_Init(BNRG_SPI_RESET_PORT, &GPIO_InitStruct);
+        HAL_GPIO_WritePin(BNRG_SPI_RESET_PORT, BNRG_SPI_RESET_PIN, GPIO_PIN_RESET);
 
         /* Configure IRQ pin (PA.4) - with external interrupt */
         GPIO_InitStruct.Pin = BNRG_SPI_IRQ_PIN;
@@ -289,12 +291,12 @@ int app_main()
     mcu_init();
 
     TRACE_INFO("BLE communication initialization...\n\n");
-    HAL_Delay(10);
+
     BlueNRG_Init();
     /* Initialize the BlueNRG Custom services */
     Init_BlueNRG_Custom_Services();
 
-    TRACE_INFO("Application --> Start\n");
+    TRACE_INFO("Application --> Start 2\n");
     while (1)
     {
         /* code */
