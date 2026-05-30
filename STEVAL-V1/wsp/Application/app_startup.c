@@ -52,8 +52,6 @@ void Reset_Handler()
     volatile uint32_t *data = &_sidata;
     volatile uint32_t *bss_start = &_sbss;
     volatile uint32_t *bss_end = &_ebss;
-    SystemInit();
-
     while (start < end)
     {
         /* code */
@@ -66,6 +64,8 @@ void Reset_Handler()
         /* code */
         *bss_start++ = 0;
     }
+
+    SystemInit();
 
     app_main();
 }

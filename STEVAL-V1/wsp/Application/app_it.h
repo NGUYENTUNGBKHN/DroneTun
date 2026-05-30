@@ -24,6 +24,7 @@ void SVC_IRQHandler(void);
 void DebugMonitor_IRQHandler(void);
 void PendSV_IRQHandler(void);
 void SysTick_IRQHandler(void);
+void SPI1_IRQHandler(void);
 
 #ifdef __cplusplus
 }

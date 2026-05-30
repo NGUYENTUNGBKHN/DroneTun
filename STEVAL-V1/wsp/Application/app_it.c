@@ -1,36 +1,41 @@
 /**
  * @file       app_it.c
- * @brief      
+ * @brief
  * @date       2026/05/24
  * @author     [Gentantun] (nguyenthanhtung8196@gmail.com)
- * @details    
- * @ref        
+ * @details
+ * @ref
  * @copyright  Copyright (c) 2026 RoboTun
-*/
+ */
 /*******************************************************************************
 **                                INCLUDES
 *******************************************************************************/
 #include "app_it.h"
 #include "app_main.h"
+#include "stm32f4xx_hal.h"
+#include "stm32f4xx.h"
+
 /*******************************************************************************
 **                       INTERNAL MACRO DEFINITIONS
 *******************************************************************************/
-
 
 /*******************************************************************************
 **                      COMMON VARIABLE DEFINITIONS
 *******************************************************************************/
 
-
 /*******************************************************************************
 **                      INTERNAL VARIABLE DEFINITIONS
 *******************************************************************************/
 
-
 /*******************************************************************************
 **                      INTERNAL FUNCTION PROTOTYPES
 *******************************************************************************/
-
+// extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
+extern SPI_HandleTypeDef SpiHandle;
+// extern SPI_HandleTypeDef hspi2;
+// extern TIM_HandleTypeDef htim2;
+// extern TIM_HandleTypeDef htim9;
+// extern UART_HandleTypeDef huart1;
 
 /*******************************************************************************
 **                          FUNCTION DEFINITIONS
@@ -132,5 +137,34 @@ void SysTick_IRQHandler(void)
     HAL_IncTick();
 }
 
-/******************************** End of file *********************************/
+/**
+ * @brief This function handles SPI1 global interrupt.
+ */
+void SPI1_IRQHandler(void)
+{
+    /* USER CODE BEGIN SPI1_IRQn 0 */
 
+    /* USER CODE END SPI1_IRQn 0 */
+    HAL_SPI_IRQHandler(&SpiHandle);
+    /* USER CODE BEGIN SPI1_IRQn 1 */
+
+    /* USER CODE END SPI1_IRQn 1 */
+}
+
+void EXTI4_IRQHandler(void)
+{
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
+}
+
+void USART1_IRQHandler(void)
+{
+    /* USER CODE BEGIN USART1_IRQn 0 */
+
+    /* USER CODE END USART1_IRQn 0 */
+    //   HAL_UART_IRQHandler(&huart1);
+    /* USER CODE BEGIN USART1_IRQn 1 */
+
+    /* USER CODE END USART1_IRQn 1 */
+}
+
+/******************************** End of file *********************************/

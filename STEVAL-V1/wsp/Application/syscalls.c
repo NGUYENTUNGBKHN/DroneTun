@@ -29,7 +29,7 @@
 #include <time.h>
 #include <sys/time.h>
 #include <sys/times.h>
-#include "debug.h"
+#include "debug_1.h"
 #define ITM_DEBUG  0
 #if ITM_DEBUG
 /* ITM Function */

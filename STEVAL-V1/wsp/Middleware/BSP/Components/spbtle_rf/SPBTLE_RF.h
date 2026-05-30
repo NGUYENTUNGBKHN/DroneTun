@@ -45,7 +45,7 @@
 
 /* Includes ------------------------------------------------------------------*/ 
   #include "stm32f4xx_hal.h"
-  #define SYSCLK_FREQ 80000000
+  #define SYSCLK_FREQ 84000000
   // #include "app_main.h"
 
 /** @addtogroup BSP

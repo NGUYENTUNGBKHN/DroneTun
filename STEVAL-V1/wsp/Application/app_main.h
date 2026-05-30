@@ -18,9 +18,15 @@ extern "C"
 #include <stdio.h>
 #include <stdint.h>
 #include "mcu.h"
-#include "debug.h"
+#include "debug_1.h"
+#include "ble_status.h"
+#include "ble.h"
+#include "component.h"
 
-
+#define STM32_UUID ((uint32_t *)0x1FFF7A10)
+#define NAME_BLUEMS 'D','R','N','1','1','2','0'
+extern int32_t BytesToWrite;
+extern uint8_t BufferToWrite[256];
 
 
 #ifdef __cplusplus

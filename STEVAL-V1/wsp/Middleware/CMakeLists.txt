@@ -33,6 +33,7 @@ target_include_directories(middleware PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/STM32_BlueNRG/Interface
     ${CMAKE_CURRENT_SOURCE_DIR}/STM32_BlueNRG/SimpleBlueNRG_HCI/includes
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP
+    ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Components/
     ${CMAKE_CURRENT_SOURCE_DIR}/BSP/Components/spbtle_rf
 )
 

@@ -1,4 +1,15 @@
 
+
+# Check available builder
+## "MinGW Makefiles"
+mingw32-make --version
+
+## "Ninja"
+ninja --version
+
+## Visual Studio 
+msbuild -version
+
 # The first build
 
 ## 1. Configurate project
@@ -14,3 +25,6 @@ cmake --build _cmake_build --target boot --clean-first -j4
 
 ## 4. Build Middleware
 cmake --build _cmake_build --target middleware -j4
+
+## 5. Build Application
+cmake --build _cmake_build --target app -j4

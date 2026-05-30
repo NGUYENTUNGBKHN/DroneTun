@@ -47,6 +47,7 @@ int boot_main()
     TRACE_INFO("Bootloader --> Start\n");
     if(app_crc_check)   // jump to Application
     {
+        
         jump_to_application();
     }
     else                // jump to Bootloader
@@ -66,8 +67,6 @@ void jump_to_bootloader()
 
 void jump_to_application()
 {
-    void (*app_reset_handler)(void);
-
     uint32_t app_msp_addr = *(volatile uint32_t*)(STEVAL_BOARD_APP_START_ADDRESS);
 
     uint32_t app_reset_addr = *(volatile uint32_t*)(STEVAL_BOARD_APP_START_ADDRESS + 4);
@@ -78,14 +77,21 @@ void jump_to_application()
     __set_BASEPRI(0x00000000);   // Set BASEPRI to its reset value 0.
     __set_FAULTMASK(0x00000000); // Set FAULTMASK to its reset value 0.
 
-    app_reset_handler = (void*)app_reset_addr;
-
-    /* Set MSP */
-    __set_MSP(app_msp_addr);
+    /* Disable SysTick and clear its pending interrupt */
+    SysTick->CTRL = 0;
+    SysTick->LOAD = 0;
+    SysTick->VAL = 0;
     /* Change vtor table */
     SCB->VTOR = STEVAL_BOARD_APP_START_ADDRESS;
-    /* Call reset handler */
-    app_reset_handler();
+
+    /* Set MSP and Jump to application using inline assembly to prevent stack corruption */
+    __asm volatile (
+        "msr msp, %0\n"
+        "bx %1\n"
+        :
+        : "r" (app_msp_addr), "r" (app_reset_addr)
+        : "memory"
+    );
 }
 
 

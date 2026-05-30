@@ -5,6 +5,7 @@
 # Sources
 # --------------------------------------------------------------------------
 file(GLOB APP_C_SRC      "${CMAKE_CURRENT_SOURCE_DIR}/*.c")
+file(GLOB APP_C_SRC_SUB  "${CMAKE_CURRENT_SOURCE_DIR}/*/*/*.c")
 file(GLOB APP_ASM_S_SRC  "${CMAKE_CURRENT_SOURCE_DIR}/*.S")
 file(GLOB APP_ASM_s_SRC  "${CMAKE_CURRENT_SOURCE_DIR}/*.s")
 
@@ -16,6 +17,7 @@ add_executable(app
     ${APP_ASM_S_SRC}
     ${APP_ASM_s_SRC}
     ${APP_JZIP_SRC}
+    ${APP_C_SRC_SUB}
 )
 
 # --------------------------------------------------------------------------
@@ -23,6 +25,8 @@ add_executable(app
 # --------------------------------------------------------------------------
 target_include_directories(app PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/User
+    ${CMAKE_CURRENT_SOURCE_DIR}/User/bluetooth
 )
 
 # --------------------------------------------------------------------------
